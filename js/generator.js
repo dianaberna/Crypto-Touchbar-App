@@ -66,9 +66,6 @@ function generateJSON(template, cb) {
         coin.BTTIconData = base64PNG;
 
         let extraOptions = 'False';
-        if (userData.apiSelector.dataset.apitype == 'historical') {
-            extraOptions = '&limit=1&aggregate=1&toTs=' + userData.dateTimeSelector.value;
-        }
         
         let data = {
             coin_ticker: coin.BTTWidgetName,
@@ -79,7 +76,7 @@ function generateJSON(template, cb) {
             percentageRound: userData.percentageRound,
             percent: userData.userPercentageModifer,
             output_type: userData.formatSelector,
-            apiSelector: userData.apiSelector.dataset.apitype,
+            apiSelector: "live",
             extraOptions: extraOptions,
             offline_cache: userData.cacheBool
         };
@@ -97,11 +94,6 @@ function generateJSON(template, cb) {
         coinArray.push(closeGroup);
         output.BTTPresetContent[0].BTTTriggers[0].BTTAdditionalActions = coinArray;
         output.BTTPresetContent[0].BTTTriggers[0].BTTIconData = userData.selectedFiatObj.icon;
-
-        if (userData.apiSelector.dataset.apitype == 'historical') {
-
-            output.BTTPresetContent[0].BTTTriggers[0].BTTTouchBarButtonName = userData.dateTimeSelectorString.value;
-        }
     }
     else {
         output.BTTPresetContent[0].BTTTriggers = coinArray;
