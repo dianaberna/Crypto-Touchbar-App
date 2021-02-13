@@ -113,12 +113,12 @@ function addCrypto(event) {
             targetColour = document.getElementById(target.dataset.ticker + '-colour'),
             text = document.createElement('span'),
             touchArea = document.getElementById('crypto-touchbar-area');
-
+        
         cryptoTouch.setAttribute('id', target.dataset.ticker + '-touch');
         cryptoTouch.className = 'touchbar-widget crypto';
         cryptoTouch.dataset.ticker = target.dataset.ticker;
 
-        cryptoTouch.style.backgroundColor = targetColour.style.backgroundColor;
+        cryptoTouch.style.background = targetColour.jscolor.toBackground(); //targetColour.style.backgroundColor;
         touchArea.appendChild(cryptoTouch);
 
         imgTouch.className = 'svg touchbar-crypto-icon';
@@ -177,10 +177,11 @@ function addCoin(coinData) {
     text.setAttribute('for', coinData.Name);
     text.innerHTML = coinData.Name;
 
-    colour.className = "jscolor {onFineChange:'updatePreviewColour(this)',valueElement:null,value:'"+ coinData.Colour +"'}";
+    colour.id = coinData.Ticker + '-colour';
+    colour.className = "jscolor"
     colour.style.width = '20';
     colour.style.height = '20';
-    colour.id = coinData.Ticker + '-colour';
+    colour.setAttribute("data-jscolor","{onChange:'updatePreviewColour(this)',value:'"+ coinData.Colour +"'}");
 
     colourSVG.className = "jscolor {onFineChange:'updatePreviewSVGColour(this)',valueElement:null,value:'000000'}";
     colourSVG.style.width = '20';
@@ -200,7 +201,7 @@ function addCoin(coinData) {
     document.getElementById('coins').appendChild(cryptoSelector);
 
     // Initialise jscolor on new element
-    jscolor.installByClassName('jscolor');
+    jscolor.install();
 
 }
 
@@ -280,7 +281,7 @@ function loadData() {
             .addEventListener('change', updatePreviewFiat);
 
     // enable colour picker on dynamically generated inputs
-    jscolor.installByClassName('jscolor');
+    jscolor.install();
 
     // events for on change of searchbox input
     let dynamicCoinList = document.getElementById('dynamic-coinlist');

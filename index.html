@@ -250,6 +250,26 @@
     <script type="text/javascript" src="js/thirdparty/jscolor.min.js"></script>
     <script type="text/javascript" src="js/thirdparty/mustache.min.js"></script>
     <script type="text/javascript" src="js/thirdparty/choices-PR325/choices.min.js"></script>
+    <script>
+        function updatePreviewColour(elm) {
+            const id = elm.previewElement.id,
+                cryptoColour = document.getElementById(id),
+                cryptoTouch = document.getElementById(id.replace('-colour', '-touch'));
 
+            if (cryptoTouch) {
+                cryptoTouch.style.background = elm.toBackground(); //cryptoColour.style.backgroundColor;
+            }
+        }
+
+        function updatePreviewSVGColour(elm) {
+            const id = elm.styleElement.id,
+                cryptoColour = document.getElementById(id),
+                cryptoTouch = document.getElementById(id.replace('-svg-colour', '-touch-icon'));
+
+            if (cryptoTouch) {
+                cryptoTouch.style.fill = cryptoColour.style.backgroundColor;
+            }
+        }
+    </script>
 </body>
 </html>
