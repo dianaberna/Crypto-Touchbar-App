@@ -239,7 +239,9 @@ function data() {
 			"Name": "Dogecoin",
 			"Ticker": "DOGE",
 			"Icon": "DOGE",
-			"Colour": "B4A146"
+			"Colour": "B4A146",
+			"ShowDefault": true
+			
 		},
 		// E - 5
 		{
@@ -752,8 +754,7 @@ function data() {
 			"Name": "Stellas Lumens",
 			"Ticker": "XLM",
 			"Icon": "STR",
-			"Colour": "FFFFFF",
-			"ShowDefault": true
+			"Colour": "FFFFFF"
 		},
 		{
 			"Name": "Stratis",
@@ -809,7 +810,8 @@ function data() {
 			"Name": "Tether",
 			"Ticker": "USDT",
 			"Icon": "USDT-alt",
-			"Colour": "4F9E7D"
+			"Colour": "4F9E7D",
+			"ShowDefault": true
 		},
 		// V - 5
 		{
